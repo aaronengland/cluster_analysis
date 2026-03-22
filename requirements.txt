@@ -1,0 +1,16 @@
+boto3
+s3fs
+pyarrow
+pandas
+numpy
+scipy
+scikit-learn
+optuna
+joblib
+shap
+matplotlib
+seaborn
+plotly
+statsmodels
+tqdm
+kneed
