@@ -1,6 +1,6 @@
 # Customer Segmentation with Cluster Analysis
 
-In this project, I analyzed over 500,000 retail transactions from an online store to group customers into distinct segments based on their purchasing behavior. The idea is similar to how a store manager might intuitively recognize "regulars," "big spenders," and "one-time shoppers" — except I used machine learning to do it systematically across 4,312 customers. I engineered eight behavioral features for each customer (like how recently they purchased, how often they buy, and how much they spend), applied K-Means clustering, and identified five distinct customer segments — each with unique characteristics and actionable marketing strategies. I also validated the results by comparing K-Means against two alternative algorithms (Agglomerative Clustering and DBSCAN) and confirmed that K-Means provides the best balance of statistical quality and business interpretability.
+In this project, I analyzed over 500,000 retail transactions from an online store to group customers into distinct segments based on their purchasing behavior. The idea is similar to how a store manager might intuitively recognize "regulars," "big spenders," and "one-time shoppers" - except I used machine learning to do it systematically across 4,312 customers. I engineered eight behavioral features for each customer (like how recently they purchased, how often they buy, and how much they spend), applied K-Means clustering, and identified five distinct customer segments - each with unique characteristics and actionable marketing strategies. I also validated the results by comparing K-Means against two alternative algorithms (Agglomerative Clustering and DBSCAN) and confirmed that K-Means provides the best balance of statistical quality and business interpretability.
 
 ---
 
@@ -28,19 +28,19 @@ The data comes from the Online Retail II dataset from the UCI Machine Learning R
 
 ![Missing Values](01_eda/output/missing_values.png)
 
-This chart shows the proportion of missing data in each column. The customer_id field has the most missing values at about 20.5% — these represent guest checkouts where no customer account was used. Since I cannot track purchasing behavior without a customer ID, these records were removed during cleaning. All other fields are nearly complete.
+This chart shows the proportion of missing data in each column. The customer_id field has the most missing values at about 20.5% - these represent guest checkouts where no customer account was used. Since I cannot track purchasing behavior without a customer ID, these records were removed during cleaning. All other fields are nearly complete.
 
 ### Transaction Distributions
 
 ![Distributions](01_eda/output/distributions.png)
 
-These histograms show the distribution of transaction quantities and prices. Both are heavily right-skewed — most transactions involve small quantities and low prices, but a few involve very large orders. I clipped the display at the 1st and 99th percentiles to keep the charts readable. This extreme skewness is why I applied logarithmic transformations before clustering.
+These histograms show the distribution of transaction quantities and prices. Both are heavily right-skewed - most transactions involve small quantities and low prices, but a few involve very large orders. I clipped the display at the 1st and 99th percentiles to keep the charts readable. This extreme skewness is why I applied logarithmic transformations before clustering.
 
 ### Transaction Volume Over Time
 
 ![Transactions Over Time](01_eda/output/transactions_over_time.png)
 
-This dual-axis chart shows monthly transaction count (bars) and total revenue (line) over the dataset period. There is a clear spike in late 2010, likely driven by holiday shopping. Understanding these temporal patterns helps put the customer segments in context — some customers may appear "lapsed" simply because the data ends shortly after their purchase.
+This dual-axis chart shows monthly transaction count (bars) and total revenue (line) over the dataset period. There is a clear spike in late 2010, likely driven by holiday shopping. Understanding these temporal patterns helps put the customer segments in context - some customers may appear "lapsed" simply because the data ends shortly after their purchase.
 
 ### Geographic Distribution
 
@@ -58,7 +58,7 @@ This time series shows the monthly cancellation rate. The overall rate is approx
 
 ![RFM Preview](01_eda/output/rfm_preview.png)
 
-These histograms preview the three core customer features — Recency (days since last purchase), Frequency (number of orders), and Monetary value (total spending). All three are heavily right-skewed: most customers purchased recently, bought only a few times, and spent modest amounts, while a small number of "power buyers" show extreme values on all three dimensions.
+These histograms preview the three core customer features - Recency (days since last purchase), Frequency (number of orders), and Monetary value (total spending). All three are heavily right-skewed: most customers purchased recently, bought only a few times, and spent modest amounts, while a small number of "power buyers" show extreme values on all three dimensions.
 
 ### Feature Correlations
 
@@ -111,7 +111,7 @@ This ensures no single feature dominates the distance calculations simply becaus
 
 ![Elbow and Silhouette](03_clustering/output/elbow_silhouette.png)
 
-I tested cluster counts from 2 to 10 using two complementary methods. The **elbow plot** (left) shows how compactly the clusters group together — the "elbow" at K=5 indicates diminishing returns from adding more clusters. The **silhouette score** (right) measures how well each customer fits within their assigned cluster versus neighboring clusters. While K=2 has the highest silhouette score (0.30), it provides too few segments to be actionable. K=5 offers a good balance between statistical quality (silhouette = 0.21) and business interpretability.
+I tested cluster counts from 2 to 10 using two complementary methods. The **elbow plot** (left) shows how compactly the clusters group together - the "elbow" at K=5 indicates diminishing returns from adding more clusters. The **silhouette score** (right) measures how well each customer fits within their assigned cluster versus neighboring clusters. While K=2 has the highest silhouette score (0.30), it provides too few segments to be actionable. K=5 offers a good balance between statistical quality (silhouette = 0.21) and business interpretability.
 
 ### Silhouette Analysis
 
@@ -123,7 +123,7 @@ This chart shows the silhouette coefficient for every individual customer, group
 
 ![Centroid Heatmap](03_clustering/output/centroid_heatmap.png)
 
-This heatmap shows the average (standardized) value of each feature for each cluster. Red cells indicate above-average values and blue cells indicate below-average. This is the "fingerprint" of each segment — for example, one cluster might be bright red for frequency and monetary (VIP customers) while another is bright red for recency (lapsed customers). This visualization makes it immediately clear how the segments differ from each other.
+This heatmap shows the average (standardized) value of each feature for each cluster. Red cells indicate above-average values and blue cells indicate below-average. This is the "fingerprint" of each segment - for example, one cluster might be bright red for frequency and monetary (VIP customers) while another is bright red for recency (lapsed customers). This visualization makes it immediately clear how the segments differ from each other.
 
 ### Feature Distributions by Cluster
 
@@ -135,7 +135,7 @@ These eight panels show overlaid histograms for each feature, color-coded by clu
 
 ![Cluster Sizes](03_clustering/output/cluster_sizes.png)
 
-This bar chart shows how many customers fall into each cluster. The distribution is reasonably balanced across four of the five clusters (22-28% each), with one small niche cluster containing just 44 customers (1%). The balance is important — very imbalanced clusters can indicate the algorithm is not finding meaningful structure.
+This bar chart shows how many customers fall into each cluster. The distribution is reasonably balanced across four of the five clusters (22-28% each), with one small niche cluster containing just 44 customers (1%). The balance is important - very imbalanced clusters can indicate the algorithm is not finding meaningful structure.
 
 ---
 
@@ -145,7 +145,7 @@ This bar chart shows how many customers fall into each cluster. The distribution
 
 ![Radar Chart](04_profiling/output/radar_chart.png)
 
-This polar plot compares all five segments simultaneously across the eight behavioral features, with values normalized to a 0-1 scale. Each cluster's "shape" reveals its character at a glance — the VIP segment (Cluster 2) creates a large polygon spanning most dimensions, while the Lapsed segment (Cluster 1) creates a small polygon concentrated near the center.
+This polar plot compares all five segments simultaneously across the eight behavioral features, with values normalized to a 0-1 scale. Each cluster's "shape" reveals its character at a glance - the VIP segment (Cluster 2) creates a large polygon spanning most dimensions, while the Lapsed segment (Cluster 1) creates a small polygon concentrated near the center.
 
 ### Segment Summary
 
@@ -173,7 +173,7 @@ These five panels show the top 10 countries within each customer segment. The UK
 
 ![Top Products](04_profiling/output/top_products.png)
 
-Each segment gravitates toward different products. These charts show the top 10 products by revenue within each cluster. VIP Champions spread their spending across a wide catalog, while Lapsed customers concentrate on just a few items. This product-level insight directly informs targeted marketing — different segments should receive different product recommendations.
+Each segment gravitates toward different products. These charts show the top 10 products by revenue within each cluster. VIP Champions spread their spending across a wide catalog, while Lapsed customers concentrate on just a few items. This product-level insight directly informs targeted marketing - different segments should receive different product recommendations.
 
 ### Purchase Timing Patterns
 
@@ -207,7 +207,7 @@ This time series shows monthly revenue contributed by each segment. VIP Champion
 
 ![Metrics Comparison](05_comparison/output/metrics_comparison.png)
 
-I validated the K-Means results by comparing against two alternative clustering algorithms. This chart compares their silhouette scores and cluster counts. While DBSCAN achieves the highest silhouette score (0.57), it does so by placing 98.6% of customers into a single cluster — which is useless for segmentation.
+I validated the K-Means results by comparing against two alternative clustering algorithms. This chart compares their silhouette scores and cluster counts. While DBSCAN achieves the highest silhouette score (0.57), it does so by placing 98.6% of customers into a single cluster - which is useless for segmentation.
 
 | Metric | K-Means (K=5) | Agglomerative (K=5) | DBSCAN |
 |--------|--------------|-------------------|--------|
@@ -243,6 +243,6 @@ This side-by-side comparison of cluster sizes across all three algorithms drives
 |----------|-----------|
 | RFM + 5 additional features | The classic Recency-Frequency-Monetary framework captures core behavior, but adding average order value, items per order, unique products, unit price, and tenure provides a richer picture that reveals segments RFM alone would miss (like the High-Ticket Niche). |
 | Log transformation | Customer spending features are heavily right-skewed. Without log transformation, a handful of extreme spenders would dominate the clustering, producing one "big spender" cluster and one giant "everyone else" cluster. |
-| Z-score standardization | K-Means uses distance calculations — without standardizing, features measured in dollars ($0-$349K) would overwhelm features measured in days (0-374). Standardizing ensures each feature contributes equally. |
-| K=5 over K=2 | K=2 has a higher silhouette score but splits customers into just "active" and "inactive" — not useful for targeted marketing. K=5 reveals nuanced segments with distinct strategies. |
+| Z-score standardization | K-Means uses distance calculations - without standardizing, features measured in dollars ($0-$349K) would overwhelm features measured in days (0-374). Standardizing ensures each feature contributes equally. |
+| K=5 over K=2 | K=2 has a higher silhouette score but splits customers into just "active" and "inactive" - not useful for targeted marketing. K=5 reveals nuanced segments with distinct strategies. |
 | K-Means over alternatives | DBSCAN's high silhouette score is misleading (98.6% in one cluster). Agglomerative produces imbalanced groups. K-Means provides the best combination of statistical quality, balanced segments, and business interpretability. |
